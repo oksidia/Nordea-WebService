@@ -40,7 +40,7 @@ class ApplicationRequest
         $result = [];
 
         foreach(get_class_vars(self::class) as $name => $value){
-            $key = str_camel_case(strtolower($name));
+            $key = Helper::strCamelCase(strtolower($name));
             $value = $this->$name;
 
             if($ns){
@@ -50,7 +50,7 @@ class ApplicationRequest
             if(is_array($value) && count($value)){
                 throw new UnsupportedException();
             } else if(!empty($value)) {
-                $result[ucfirst(str_camel_case($key))] = $value;
+                $result[ucfirst(Helper::strCamelCase($key))] = $value;
             }
         }
 
